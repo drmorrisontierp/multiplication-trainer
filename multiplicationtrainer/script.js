@@ -74,9 +74,6 @@ function _recolor(event, fill, color) {
   if (!x) {
     return;
   }
-  //else {
-    //console.error(`Invalid element structure: ${event}`); // Debug statement
-  //}
 }
 
 
@@ -400,7 +397,6 @@ function handleKeyDown(event) {
     76: "l",
     84: "t",
   };
-console.log(event)
   const id = keyMapping[event.keyCode];
   if (id) {
 
@@ -515,7 +511,6 @@ function tableRow(id) {
   if (startFlag) return 0;
   let i = id[1];
   let c = id[0];
-  //console.log(i, c)
   if (pressedButton[c]) buttonUp(pressedButton[c]);
   buttonDown(id);
   oldRow[c].forEach((e) => {
@@ -546,7 +541,6 @@ function tableRow(id) {
 
 // Handle number input
 function enter(flag, event) {
-  //if (startFlag) return 0;
   if (flag) {
     buttonDown("b" + event);
     setTimeout(() => {
@@ -556,16 +550,13 @@ function enter(flag, event) {
   if (expression.length > 2) {
     return 0;
   }
-  //let target = element("result");
   let digit = event;
   expression += digit;
   element("result").innerHTML += digit;
-  //console.log(expression)
 }
 
 // Handle delete input
 function del(flag, event) {
-  //if (startFlag) return 0;
   if (flag) {
     buttonDown(event);
     setTimeout(() => {
@@ -580,7 +571,6 @@ function del(flag, event) {
 
 // Handle check input
 function check(flag, event) {
-  //if (startFlag) return 0;
   if (flag) {
     buttonDown(event);
     setTimeout(() => {
@@ -597,7 +587,6 @@ function check(flag, event) {
   if (element("result").innerHTML === "") return
   if (expression.includes("c")) {
     // clear local storage and initiate new state
-    //console.log("running clear")
     clearMemory();
     level = 4;
     timerHeight = 1;
@@ -606,7 +595,6 @@ function check(flag, event) {
     generateProducts();
     currentProduct = [];
     saveState();
-    //start(true, "bstart");
     expression = "";
     element("result").innerHTML = "";
     return 0;
@@ -632,7 +620,6 @@ function check(flag, event) {
     timerHeight = 1;
     products = [];
     generateProducts();
-    //start(true, "bstart");
     return 0;
   }
   if (expression.includes("l")) {
@@ -655,7 +642,6 @@ function check(flag, event) {
     timerHeight = 1;
     products = [];
     generateProducts();
-    //start(true, "bstart");
     return 0;
   }
   // Show if answer is correct or not
@@ -717,7 +703,6 @@ function check(flag, event) {
       products.push(currentProduct[1]);
       products.push(currentProduct[0]);
       products.push(currentProduct[1]);
-      //console.log(products)
       if (products.length > 100) {
         if (level > 1) {
           level -= 1;
@@ -758,7 +743,6 @@ function start(flag, event) {
       timerLength = 800/(level-10)
       console.log("2", timerLength)
     }
-    //readState();
     if (products.length == 0) generateProducts();
     chooseProduct();
     answerFlag = true;
