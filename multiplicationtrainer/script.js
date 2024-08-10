@@ -565,6 +565,7 @@ function enter(flag, event) {
   let digit = event;
   expression += digit;
   element("result").innerHTML += digit;
+  console.log(expression)
 }
 
 // Handle delete input
@@ -593,8 +594,15 @@ function check(flag, event) {
   }
   let answerField = element("answer-field");
   let questionField = element("question-field");
+  if (startFlag && !(element("result").innerHTML.includes("c") || element("result").innerHTML.includes("l") || element("result").innerHTML.includes("t"))) {
+    element("result").innerHTML = ""
+    expression = ""
+    return
+  };
+  if (element("result").innerHTML === "") return
   if (expression.includes("c")) {
     // clear local storage and initiate new state
+    console.log("running clear")
     clearMemory();
     level = 4;
     timerHeight = 1;
@@ -744,6 +752,7 @@ function start(flag, event) {
     }, 250);
   }
   if (startFlag) {
+    element("result").innerHTML = ""
     readState()
     growTable()
     if (level <= 10) {

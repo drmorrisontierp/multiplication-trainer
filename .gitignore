@@ -48,6 +48,13 @@ Thumbs.db
 *.min.css
 *.map
 
+# Node minify outputs (additional)
+*.min.html
+*.min.json
+*.min.xml
+*.min.*
+*minified.*
+
 # Dependency directories
 node_modules/
 jspm_packages/
