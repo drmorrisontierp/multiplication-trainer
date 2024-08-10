@@ -2,11 +2,12 @@ const { app, BrowserWindow } = require('electron/main')
 
 const createWindow = () => {
   const win = new BrowserWindow({
-    width: 1000,
-    height: 600
+    width: 1200,
+    height: 650
   })
 
   win.loadFile('index.html')
+  win.setMenu(null)
 }
 
 app.whenReady().then(() => {
