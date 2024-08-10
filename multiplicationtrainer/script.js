@@ -11,7 +11,7 @@ let timerHeight = 1; // starting timer height
 let answerFlag = true;
 let startFlag = true; // flag to show if game is running
 let n = -9;
-let timerLength = 4000; // timer length 4050 = 10 min
+let timerLength = 4000; // timer length 4000 = 10 min
 let originalTimer = 4000;
 
 
@@ -551,9 +551,8 @@ function tableRow(id) {
 
 // Handle number input
 function enter(flag, event) {
-  if (startFlag) return 0;
+  //if (startFlag) return 0;
   if (flag) {
-    console.log("should not run")
     buttonDown("b" + event);
     setTimeout(() => {
       buttonUp("b" + event);
@@ -570,7 +569,7 @@ function enter(flag, event) {
 
 // Handle delete input
 function del(flag, event) {
-  if (startFlag) return 0;
+  //if (startFlag) return 0;
   if (flag) {
     buttonDown(event);
     setTimeout(() => {
@@ -585,7 +584,7 @@ function del(flag, event) {
 
 // Handle check input
 function check(flag, event) {
-  if (startFlag) return 0;
+  //if (startFlag) return 0;
   if (flag) {
     buttonDown(event);
     setTimeout(() => {
