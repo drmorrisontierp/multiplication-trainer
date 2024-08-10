@@ -74,14 +74,9 @@ function _recolor(event, fill, color) {
   if (!x) {
     return;
   }
-  x = x.children[0];
-  if (x && x.children[1] && x.children[3]) {
-    x.children[1].setAttribute("fill", fill);
-    x.children[3].setAttribute("fill", color);
-    x.children[3].setAttribute("stroke", "black");
-  } else {
-    console.error(`Invalid element structure: ${event}`); // Debug statement
-  }
+  //else {
+    //console.error(`Invalid element structure: ${event}`); // Debug statement
+  //}
 }
 
 
@@ -413,7 +408,7 @@ console.log(event)
     if (id === "benter") check(true, id);
     if (id === "bdel") del(true, id);
     if (id === "bstart") start(true, id);
-    if (id === "c" || id === "l" || id === "t") enter(false, id);
+    if ((id === "c" || id === "l" || id === "t") && startFlag) enter(false, id);
     else if (id !== "benter" && id !== "bdel") enter(true, event.key);
   }
 }
@@ -520,7 +515,7 @@ function tableRow(id) {
   if (startFlag) return 0;
   let i = id[1];
   let c = id[0];
-  console.log(i, c)
+  //console.log(i, c)
   if (pressedButton[c]) buttonUp(pressedButton[c]);
   buttonDown(id);
   oldRow[c].forEach((e) => {
@@ -565,7 +560,7 @@ function enter(flag, event) {
   let digit = event;
   expression += digit;
   element("result").innerHTML += digit;
-  console.log(expression)
+  //console.log(expression)
 }
 
 // Handle delete input
@@ -602,7 +597,7 @@ function check(flag, event) {
   if (element("result").innerHTML === "") return
   if (expression.includes("c")) {
     // clear local storage and initiate new state
-    console.log("running clear")
+    //console.log("running clear")
     clearMemory();
     level = 4;
     timerHeight = 1;
@@ -611,7 +606,7 @@ function check(flag, event) {
     generateProducts();
     currentProduct = [];
     saveState();
-    start(true, "bstart");
+    //start(true, "bstart");
     expression = "";
     element("result").innerHTML = "";
     return 0;
@@ -637,7 +632,7 @@ function check(flag, event) {
     timerHeight = 1;
     products = [];
     generateProducts();
-    start(true, "bstart");
+    //start(true, "bstart");
     return 0;
   }
   if (expression.includes("l")) {
@@ -660,7 +655,7 @@ function check(flag, event) {
     timerHeight = 1;
     products = [];
     generateProducts();
-    start(true, "bstart");
+    //start(true, "bstart");
     return 0;
   }
   // Show if answer is correct or not
@@ -753,6 +748,7 @@ function start(flag, event) {
   }
   if (startFlag) {
     element("result").innerHTML = ""
+    expression = ""
     readState()
     growTable()
     if (level <= 10) {
