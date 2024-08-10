@@ -1,0 +1,23 @@
+{
+  "name": "Multiplication-trainer",
+  "version": "1.0.0",
+  "description": "App for training multiplication tables",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/drmorrisontierp/multiplication-trainer.git"
+  },
+  "author": "Michael Morrison",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/drmorrisontierp/multiplication-trainer/issues"
+  },
+  "homepage": "https://github.com/drmorrisontierp/multiplication-trainer#readme",
+  "devDependencies": {
+    "electron": "^31.3.1"
+  }
+}
