@@ -65,11 +65,16 @@ body {
   align-content: center;
 }
 
+.opbutton {
+  cursor: pointer;
+}
+
 .multiplication {
   display:flex;
   flex-direction: column;
   font-size: 2em;
   align-self: flex-start;
+  cursor: pointer;
 }
 
 .tooltipcontainer:hover .tooltip {
@@ -246,5 +251,59 @@ body {
   z-index:10;
 }
 
+#info-popup {
+  display: none;
+  grid-area: 1/1/2/3;
+  z-index: 11;
+  background-color: rgb(117, 218, 204);
+  margin: 2% 7% 5% 7%;
+  overflow: hidden;
+  flex-direction: column;
+}
 
+#info-top-bar {
+  min-height: 30px;
+  max-height: 30px;
+  min-width: 100%;
+  background-color: rgb(117, 218, 204);
+  display: flex;
+  flex-direction: row-reverse;
+}
+  #close-popup {
+    max-height: 30px;
+    max-width: 30px;
+    min-width:30px;
+    align-self: flex-end;
+    flex-direction: column;
+    align-content: center;
+    cursor: pointer;
+  }
+   
+#X {
+  text-align: center;
+  max-height: 30px;
+  min-height: 30px;
+  font-size: 30px;
+  font-family: sans-serif;
+  font-weight: bold;
+  color: black;
+}
 
+#info-page {
+  background-color: white;
+  border: solid rgb(117, 218, 204) 2px;
+  border-radius: 1%; min-height: 98%;
+}
+
+#info-text {
+  background-color: white;
+  max-height: 95%;
+  min-width: 95%;
+  overflow-y: scroll;
+  margin: 2% 1% 2% 1%;
+}
+
+.table-button {
+  cursor: pointer;
+}
+      

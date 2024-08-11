@@ -1,250 +1,305 @@
 /* Reset default margin, padding, and set full viewport
    height for HTML element */
-html {
-  margin: 0;
-  padding: 0;
-  height: 100vh;
-}
-
-/* Style the body with a two-column grid layout
-   and background color */
-body {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  background-color: #cce6ff;
-  max-height: 100vh;
-}
-
- /* Left column styling */
-.left {
-  grid-area: 1/1/1/2;
-  display: grid;
-  grid-template-columns: repeat(10, 1fr);
-  grid-template-rows: repeat(10, 1fr);
-  text-align: center;
-}
-
-/* Right column styling */
-.right {
-  grid-area: 1/2/1/3;
-  display: grid;
-  grid-template-rows: repeat(5, 1fr);
-  grid-template-columns: repeat(6, 1fr);
-  text-align: center;
-  max-height: 100vh;
-  margin-left: 1%;
-}
-
-/* Styling for the table element */
-.table {
-  display: grid;
-  grid-area: 1/1/11/11;
-  grid-template-rows: repeat(10, 1fr);
-  background-color: #666;
-  border-radius: 1%;
-  text-align: center;
-  font-weight: 600;
-  max-height: 99%;
-}
-
-/* Styling for rows inside the table */
-.row {
-  display: grid;
-  grid-template-columns: repeat(10, 1fr);
-  max-height: 100%;
-}
-
-/* Styling for specific elements with IDs */
-#question,
-#answer,
-#correct {
-  font-size: 2em;
-}
-
-#infoBar {
-  align-content: center;
-}
-
-.multiplication {
-  display:flex;
-  flex-direction: column;
-  font-size: 2em;
-  align-self: flex-start;
-}
-
-.tooltipcontainer:hover .tooltip {
-  display: block;
-}
-
-.tooltip {
-  position: absolute;
-  white-space: nowrap;
-  display: none;
-  background: #ffffcc;
-  border: 1px solid black;
-  border-radius: 3px;
-  color: black;
-  padding: 10px;
-  z-index: 1000;
-}
-
-#display {
-  grid-area: 1/1/2/6;
-  height: 19vh;
-}
-
-#b7 {
-  grid-area: 2/2/3/3
-}
-
-#b8 {
-  grid-area: 2/3/3/4
-}
-
-#b9 {
-  grid-area: 2/4/3/5
-}
-
-#b4 {
-  grid-area: 3/2/4/3
-}
-
-#b5 {
-  grid-area: 3/3/4/4
-}
-
-#b6 {
-  grid-area: 3/4/4/5
-}
-
-#b1 {
-  grid-area: 4/2/5/3
-}
-
-#b2 {
-  grid-area: 4/3/5/4
-}
-
-#b3 {
-  grid-area: 4/4/5/5;
-  z-index: 1;
-}
-
-#bdel {
-  grid-area: 5/2/6/3
-}
-
-#b0 {
-  grid-area: 5/3/6/4
-}
-
-#benter {
-  grid-area: 4/4/6/6;
-  z-index: 0;
-}
-
-#bstart {
-  grid-area: 2/5/4/6;
-  z-index: 0;
-}
-
-#meter {
-  grid-area: 2/1/6/2;
-  z-index: 0;
-}
-
-#products {
-  grid-area: 2/1/6/2;
-  z-index: 0;
-}
-
-#timer {
-  grid-area: 2/1/6/2;
-  z-index: 0;
-}
-
-#covers {
-  grid-area: 2/1/6/2;
-  z-index: 0;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr)
-}
-
-#infoBar {
-  display: grid;
-  grid-template-rows: repeat(14, 1fr);
-  grid-area: 1/6/7/7;
-  height: 100%; 
-}
-
-#infoBox {
-  grid-area: 1/1/15/2
-}
-
-#M {
-  grid-area: 1/1/2/2
-}
-
-#U {
-  grid-area: 2/1/3/2
-}
-
-#L1 {
-  grid-area: 3/1/4/2
-}
-
-#T1 {
-  grid-area: 4/1/5/2
-}
-
-#I1 {
-  grid-area: 5/1/6/2
-}
-
-#P {
-  grid-area: 6/1/7/2
-}
-
-#L2 {
-  grid-area: 7/1/8/2
-}
-
-#I2 {
-  grid-area: 8/1/9/2
-}
-
-#C {
-  grid-area: 9/1/10/2
-}
-
-#A {
-  grid-area: 10/1/11/2
-}
-
-#T2 {
-  grid-area: 11/1/12/2
-}
-
-#I3 {
-  grid-area: 12/1/13/2
-}
-
-#O {
-  grid-area: 13/1/14/2
-}
-
-#N {
-  grid-area: 14/1/15/2
-}
-
-#tip1 {
-  grid-area:1/1/2/2
-}
-
-#tip2 {
-  grid-area:1/2/2/3;
-  z-index:10;
-}
-
-
-
+   html {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+  }
+  
+  /* Style the body with a two-column grid layout
+     and background color */
+  body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: #cce6ff;
+    max-height: 100vh;
+  }
+  
+   /* Left column styling */
+  .left {
+    grid-area: 1/1/1/2;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    text-align: center;
+  }
+  
+  /* Right column styling */
+  .right {
+    grid-area: 1/2/1/3;
+    display: grid;
+    grid-template-rows: repeat(5, 1fr);
+    grid-template-columns: repeat(6, 1fr);
+    text-align: center;
+    max-height: 100vh;
+    margin-left: 1%;
+  }
+  
+  /* Styling for the table element */
+  .table {
+    display: grid;
+    grid-area: 1/1/11/11;
+    grid-template-rows: repeat(10, 1fr);
+    background-color: #666;
+    border-radius: 1%;
+    text-align: center;
+    font-weight: 600;
+    max-height: 99%;
+  }
+  
+  /* Styling for rows inside the table */
+  .row {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    max-height: 100%;
+  }
+  
+  /* Styling for specific elements with IDs */
+  #question,
+  #answer,
+  #correct {
+    font-size: 2em;
+  }
+  
+  #infoBar {
+    align-content: center;
+  }
+  
+  .opbutton {
+    cursor: pointer;
+  }
+  
+  .multiplication {
+    display:flex;
+    flex-direction: column;
+    font-size: 2em;
+    align-self: flex-start;
+    cursor: pointer;
+  }
+  
+  .tooltipcontainer:hover .tooltip {
+    display: block;
+  }
+  
+  .tooltip {
+    position: absolute;
+    white-space: nowrap;
+    display: none;
+    background: #ffffcc;
+    border: 1px solid black;
+    border-radius: 3px;
+    color: black;
+    padding: 10px;
+    z-index: 1000;
+  }
+  
+  #display {
+    grid-area: 1/1/2/6;
+    height: 19vh;
+  }
+  
+  #b7 {
+    grid-area: 2/2/3/3
+  }
+  
+  #b8 {
+    grid-area: 2/3/3/4
+  }
+  
+  #b9 {
+    grid-area: 2/4/3/5
+  }
+  
+  #b4 {
+    grid-area: 3/2/4/3
+  }
+  
+  #b5 {
+    grid-area: 3/3/4/4
+  }
+  
+  #b6 {
+    grid-area: 3/4/4/5
+  }
+  
+  #b1 {
+    grid-area: 4/2/5/3
+  }
+  
+  #b2 {
+    grid-area: 4/3/5/4
+  }
+  
+  #b3 {
+    grid-area: 4/4/5/5;
+    z-index: 1;
+  }
+  
+  #bdel {
+    grid-area: 5/2/6/3
+  }
+  
+  #b0 {
+    grid-area: 5/3/6/4
+  }
+  
+  #benter {
+    grid-area: 4/4/6/6;
+    z-index: 0;
+  }
+  
+  #bstart {
+    grid-area: 2/5/4/6;
+    z-index: 0;
+  }
+  
+  #meter {
+    grid-area: 2/1/6/2;
+    z-index: 0;
+  }
+  
+  #products {
+    grid-area: 2/1/6/2;
+    z-index: 0;
+  }
+  
+  #timer {
+    grid-area: 2/1/6/2;
+    z-index: 0;
+  }
+  
+  #covers {
+    grid-area: 2/1/6/2;
+    z-index: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr)
+  }
+  
+  #infoBar {
+    display: grid;
+    grid-template-rows: repeat(14, 1fr);
+    grid-area: 1/6/7/7;
+    height: 100%; 
+  }
+  
+  #infoBox {
+    grid-area: 1/1/15/2
+  }
+  
+  #M {
+    grid-area: 1/1/2/2
+  }
+  
+  #U {
+    grid-area: 2/1/3/2
+  }
+  
+  #L1 {
+    grid-area: 3/1/4/2
+  }
+  
+  #T1 {
+    grid-area: 4/1/5/2
+  }
+  
+  #I1 {
+    grid-area: 5/1/6/2
+  }
+  
+  #P {
+    grid-area: 6/1/7/2
+  }
+  
+  #L2 {
+    grid-area: 7/1/8/2
+  }
+  
+  #I2 {
+    grid-area: 8/1/9/2
+  }
+  
+  #C {
+    grid-area: 9/1/10/2
+  }
+  
+  #A {
+    grid-area: 10/1/11/2
+  }
+  
+  #T2 {
+    grid-area: 11/1/12/2
+  }
+  
+  #I3 {
+    grid-area: 12/1/13/2
+  }
+  
+  #O {
+    grid-area: 13/1/14/2
+  }
+  
+  #N {
+    grid-area: 14/1/15/2
+  }
+  
+  #tip1 {
+    grid-area:1/1/2/2
+  }
+  
+  #tip2 {
+    grid-area:1/2/2/3;
+    z-index:10;
+  }
+  
+  #info-popup {
+    display: none;
+    grid-area: 1/1/2/3;
+    z-index: 11;
+    background-color: rgb(117, 218, 204);
+    margin: 2% 7% 5% 7%;
+    overflow: hidden;
+    flex-direction: column;
+  }
+  
+  #info-top-bar {
+    min-height: 30px;
+    max-height: 30px;
+    min-width: 100%;
+    background-color: rgb(117, 218, 204);
+    display: flex;
+    flex-direction: row-reverse;
+  }
+    #close-popup {
+      max-height: 30px;
+      max-width: 30px;
+      min-width:30px;
+      align-self: flex-end;
+      flex-direction: column;
+      align-content: center;
+      cursor: pointer;
+    }
+     
+  #X {
+    text-align: center;
+    max-height: 30px;
+    min-height: 30px;
+    font-size: 30px;
+    font-family: sans-serif;
+    font-weight: bold;
+    color: black;
+  }
+  
+  #info-page {
+    background-color: white;
+    border: solid rgb(117, 218, 204) 2px;
+    border-radius: 1%; min-height: 98%;
+  }
+  
+  #info-text {
+    background-color: white;
+    max-height: 95%;
+    min-width: 95%;
+    overflow-y: scroll;
+    margin: 2% 1% 2% 1%;
+  }
+    

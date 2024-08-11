@@ -78,6 +78,33 @@
   </svg>
 
   <!-- Left Sidebar -->
+  <div id="info-popup">
+    <div id="info-top-bar" >
+      <div id="close-popup" onclick="closePopup()" >
+        <div id="X" >x</div>
+      </div>
+    </div>
+    <div id="info-page" >
+      <div id="info-text" >
+        <h1>Information</h1>
+        <h2>How to play</h2>
+        <ul>
+        <li>Click "start" button or press "space bar" on your keyboard to start</li>
+        <li>The product to calculate will appear in the left-hand display</li>
+        <li>Use the keyboard or the on-screen keypad to enter the correct calculation: this will appear in the right-hand display</li>
+        <li>If you are happy with your answer, click the "enter" button or press "enter" on your keyboard</li>
+        <li>If you have made a mistake, you can always delete your entered number with the "del" button or by pressing "back space" on your keyboard</li>
+      </ul>
+      <h2>Extra options (when the game is not running)</h2>
+        <ul>
+        <li>Click "C" in the word multiplication or on your keyboard and press or click "enter" to reset your save-game</li>
+        <li>Click "I" in the word multiplication or on your keyboard to show this information screen</li>
+        <li>Click "T" in the word multiplication or on your keyboard followed by the numbers 5, 10, 15 or 20 and enter to set the timer the equivalent minutes</li>
+        <li>Click "L" in the word multiplication or on your keyboard followed by a number between 1 and 16 and enter to select a level</li>
+      </ul>
+      </div>
+  </div>
+  </div>
   <div class="left">
     <div class="table" id="table1">
       <!-- Rows for the table -->
@@ -201,14 +228,14 @@
       <div id="U" class="multiplication" >U</div>
       <div id="L1" class="multiplication" onclick="enter(false, 'l')">L</div>
       <div id="T1" class="multiplication" onclick="enter(false, 't')">T</div>
-      <div id="I1" class="multiplication" >I</div>
+      <div id="I1" class="multiplication" onclick="enter(false, 'i')">I</div>
       <div id="P" class="multiplication" >P</div>
       <div id="L2" class="multiplication" onclick="enter(false, 'l')">L</div>
-      <div id="I2" class="multiplication" >I</div>
+      <div id="I2" class="multiplication" onclick="enter(false, 'i')">I</div>
       <div id="C" class="multiplication" onclick="enter(false, 'c')">C</div>
       <div id="A" class="multiplication" >A</div>
       <div id="T2" class="multiplication" onclick="enter(false, 't')">T</div>
-      <div id="I3" class="multiplication" >I</div>
+      <div id="I3" class="multiplication" onclick="enter(false, 'i')">I</div>
       <div id="O" class="multiplication" >O</div>
       <div id="N" class="multiplication" >N</div>
     </div>

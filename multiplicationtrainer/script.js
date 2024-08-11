@@ -13,6 +13,7 @@ let startFlag = true; // flag to show if game is running
 let n = -9;
 let timerLength = 4000; // timer length 4000 = 10 min
 let originalTimer = 4000;
+let popup = false
 
 
 // initial state object for saving and loading game state
@@ -115,6 +116,10 @@ function chooseProduct() {
     products = [];
   }
   currentProduct = [productText, product];
+}
+
+function closePopup() {
+  element("info-popup").style.display = "none"
 }
 
 // Button down animation
@@ -404,15 +409,15 @@ function handleKeyDown(event) {
     67: "c",
     76: "l",
     84: "t",
+    73: "i",
   };
   const id = keyMapping[event.keyCode];
   if (id) {
-
-    if (!"clt".includes(id)) buttonDown(id);
+    if (!"clti".includes(id)) buttonDown(id);
     if (id === "benter") check(true, id);
     if (id === "bdel") del(true, id);
     if (id === "bstart") start(true, id);
-    if ((id === "c" || id === "l" || id === "t") && startFlag) enter(false, id);
+    if ((id === "c" || id === "l" || id === "t" || id === "i") && startFlag) enter(false, id);
     else if (id !== "benter" && id !== "bdel") enter(true, event.key);
   }
 }
@@ -494,6 +499,7 @@ function growTable() {
         let _id = "h" + y;
         if (i == 0) _id = "v" + (y - 1);
         div.setAttribute("id", _id);
+        div.setAttribute("class", "table-button");
         if (input != 1)
           div.onclick = () => {
             tableRow(_id);
@@ -579,15 +585,21 @@ function del(flag, event) {
 
 // Handle check input
 function check(flag, event) {
+  console.log(expression)
   if (flag) {
     buttonDown(event);
     setTimeout(() => {
       buttonUp(event);
     }, 500);
   }
+  if (popup) {
+    element("info-popup").style.display = "none"
+    popup = false
+    return
+  }
   let answerField = element("answer-field");
   let questionField = element("question-field");
-  if (startFlag && !(element("result").innerHTML.includes("c") || element("result").innerHTML.includes("l") || element("result").innerHTML.includes("t"))) {
+  if (startFlag && !(element("result").innerHTML.includes("c") || element("result").innerHTML.includes("l") || element("result").innerHTML.includes("t") || element("result").innerHTML.includes("i"))) {
     element("result").innerHTML = ""
     expression = ""
     return
@@ -652,6 +664,17 @@ function check(flag, event) {
     generateProducts();
     return 0;
   }
+  if (expression.includes("i")) {
+    startFlag = false
+    start(startFlag, "bstart");
+    element("info-popup").style.display = "flex"
+    popup = true
+    expression = "";
+    element("result").innerHTML = "";
+    return
+  }
+
+
   // Show if answer is correct or not
   if (expression == currentProduct[1]) {
     setAttributes(answerField, {

@@ -1,4 +1,559 @@
-// -------------------GLOBAL VARIABLES-----------------------------
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self' style-src 'self' 'unsafe-inline';"
+    />
+    <meta
+      http-equiv="X-Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Multiplication Trainer</title>
+    <style>
+      /* Reset default margin, padding, and set full viewport
+   height for HTML element */
+html {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+}
+
+/* Style the body with a two-column grid layout
+   and background color */
+body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background-color: #cce6ff;
+  max-height: 100vh;
+}
+
+ /* Left column styling */
+.left {
+  grid-area: 1/1/1/2;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+  text-align: center;
+}
+
+/* Right column styling */
+.right {
+  grid-area: 1/2/1/3;
+  display: grid;
+  grid-template-rows: repeat(5, 1fr);
+  grid-template-columns: repeat(6, 1fr);
+  text-align: center;
+  max-height: 100vh;
+  margin-left: 1%;
+}
+
+/* Styling for the table element */
+.table {
+  display: grid;
+  grid-area: 1/1/11/11;
+  grid-template-rows: repeat(10, 1fr);
+  background-color: #666;
+  border-radius: 1%;
+  text-align: center;
+  font-weight: 600;
+  max-height: 99%;
+}
+
+/* Styling for rows inside the table */
+.row {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  max-height: 100%;
+}
+
+/* Styling for specific elements with IDs */
+#question,
+#answer,
+#correct {
+  font-size: 2em;
+}
+
+#infoBar {
+  align-content: center;
+}
+
+.opbutton {
+  cursor: pointer;
+}
+
+.multiplication {
+  display:flex;
+  flex-direction: column;
+  font-size: 2em;
+  align-self: flex-start;
+  cursor: pointer;
+}
+
+.tooltipcontainer:hover .tooltip {
+  display: block;
+}
+
+.tooltip {
+  position: absolute;
+  white-space: nowrap;
+  display: none;
+  background: #ffffcc;
+  border: 1px solid black;
+  border-radius: 3px;
+  color: black;
+  padding: 10px;
+  z-index: 1000;
+}
+
+#display {
+  grid-area: 1/1/2/6;
+  height: 19vh;
+}
+
+#b7 {
+  grid-area: 2/2/3/3
+}
+
+#b8 {
+  grid-area: 2/3/3/4
+}
+
+#b9 {
+  grid-area: 2/4/3/5
+}
+
+#b4 {
+  grid-area: 3/2/4/3
+}
+
+#b5 {
+  grid-area: 3/3/4/4
+}
+
+#b6 {
+  grid-area: 3/4/4/5
+}
+
+#b1 {
+  grid-area: 4/2/5/3
+}
+
+#b2 {
+  grid-area: 4/3/5/4
+}
+
+#b3 {
+  grid-area: 4/4/5/5;
+  z-index: 1;
+}
+
+#bdel {
+  grid-area: 5/2/6/3
+}
+
+#b0 {
+  grid-area: 5/3/6/4
+}
+
+#benter {
+  grid-area: 4/4/6/6;
+  z-index: 0;
+}
+
+#bstart {
+  grid-area: 2/5/4/6;
+  z-index: 0;
+}
+
+#meter {
+  grid-area: 2/1/6/2;
+  z-index: 0;
+}
+
+#products {
+  grid-area: 2/1/6/2;
+  z-index: 0;
+}
+
+#timer {
+  grid-area: 2/1/6/2;
+  z-index: 0;
+}
+
+#covers {
+  grid-area: 2/1/6/2;
+  z-index: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr)
+}
+
+#infoBar {
+  display: grid;
+  grid-template-rows: repeat(14, 1fr);
+  grid-area: 1/6/7/7;
+  height: 100%; 
+}
+
+#infoBox {
+  grid-area: 1/1/15/2
+}
+
+#M {
+  grid-area: 1/1/2/2
+}
+
+#U {
+  grid-area: 2/1/3/2
+}
+
+#L1 {
+  grid-area: 3/1/4/2
+}
+
+#T1 {
+  grid-area: 4/1/5/2
+}
+
+#I1 {
+  grid-area: 5/1/6/2
+}
+
+#P {
+  grid-area: 6/1/7/2
+}
+
+#L2 {
+  grid-area: 7/1/8/2
+}
+
+#I2 {
+  grid-area: 8/1/9/2
+}
+
+#C {
+  grid-area: 9/1/10/2
+}
+
+#A {
+  grid-area: 10/1/11/2
+}
+
+#T2 {
+  grid-area: 11/1/12/2
+}
+
+#I3 {
+  grid-area: 12/1/13/2
+}
+
+#O {
+  grid-area: 13/1/14/2
+}
+
+#N {
+  grid-area: 14/1/15/2
+}
+
+#tip1 {
+  grid-area:1/1/2/2
+}
+
+#tip2 {
+  grid-area:1/2/2/3;
+  z-index:10;
+}
+
+#info-popup {
+  display: none;
+  grid-area: 1/1/2/3;
+  z-index: 11;
+  background-color: rgb(117, 218, 204);
+  margin: 2% 7% 5% 7%;
+  overflow: hidden;
+  flex-direction: column;
+}
+
+#info-top-bar {
+  min-height: 30px;
+  max-height: 30px;
+  min-width: 100%;
+  background-color: rgb(117, 218, 204);
+  display: flex;
+  flex-direction: row-reverse;
+}
+  #close-popup {
+    max-height: 30px;
+    max-width: 30px;
+    min-width:30px;
+    align-self: flex-end;
+    flex-direction: column;
+    align-content: center;
+    cursor: pointer;
+  }
+   
+#X {
+  text-align: center;
+  max-height: 30px;
+  min-height: 30px;
+  font-size: 30px;
+  font-family: sans-serif;
+  font-weight: bold;
+  color: black;
+}
+
+#info-page {
+  background-color: white;
+  border: solid rgb(117, 218, 204) 2px;
+  border-radius: 1%; min-height: 98%;
+}
+
+#info-text {
+  background-color: white;
+  max-height: 95%;
+  min-width: 95%;
+  overflow-y: scroll;
+  margin: 2% 1% 2% 1%;
+}
+
+.table-button {
+  cursor: pointer;
+}
+      
+    </style>
+  </head>
+  <body>
+  <!-- SVG Definitions -->
+  <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0">
+    <defs>
+      <!-- Define linear gradients -->
+      <linearGradient id="Hope">
+        <!-- Gradient stops -->
+        <stop offset="0%" stop-color="#5f777d" stop-opacity="1" />
+        <stop offset="50%" stop-color="#b2ced5" stop-opacity="1" />
+        <stop offset="100%" stop-color="#3f484a" stop-opacity="1" />
+      </linearGradient>
+      <linearGradient id="Mask">
+        <!-- Gradient stops -->
+        <stop offset="0%" stop-color="#b8ced5" stop-opacity="1" />
+        <stop offset="50%" stop-color="#a9bed5" stop-opacity="1" />
+        <stop offset="100%" stop-color="#b6bfd5" stop-opacity="1" />
+      </linearGradient>
+      <linearGradient id="Glass">
+        <!-- Gradient stops -->
+        <stop offset="0%" stop-color="#5f777d" stop-opacity="0.3" />
+        <stop offset="50%" stop-color="#b2ced5" stop-opacity="0.4" />
+        <stop offset="100%" stop-color="#3f484a" stop-opacity="0.2" />
+      </linearGradient>
+      <linearGradient id="Flat">
+        <!-- Gradient stops -->
+        <stop offset="0%" stop-color="white" stop-opacity="0.4" />
+        <stop offset="100%" stop-color="gray" stop-opacity="0.3" />
+      </linearGradient>
+      <linearGradient id="Bob">
+        <!-- Gradient stops -->
+        <stop offset="0%" stop-color="white" stop-opacity="0.5" />
+        <stop offset="50%" stop-color="#242424" stop-opacity="0.2" />
+        <stop offset="100%" stop-color="white" stop-opacity="0.2" />
+      </linearGradient>
+      <linearGradient id="TableNormal">
+        <!-- Gradient stops -->
+        <stop offset="0%" stop-color="white" stop-opacity="0.5" />
+        <stop offset="50%" stop-color="silver" stop-opacity="0.2" />
+        <stop offset="100%" stop-color="white" stop-opacity="0.2" />
+      </linearGradient>
+      <linearGradient id="Meter">
+        <!-- Gradient stops -->
+        <stop offset="0%" stop-color="gray" stop-opacity="0.5" />
+        <stop offset="50%" stop-color="black" stop-opacity="0.2" />
+        <stop offset="100%" stop-color="gray" stop-opacity="1" />
+      </linearGradient>
+      <linearGradient id="Timer">
+        <!-- Gradient stops -->
+        <stop offset="0%" stop-color="white" stop-opacity="0.7" />
+        <stop offset="30%" stop-color="white" stop-opacity="1" />
+        <stop offset="100%" stop-color="black" stop-opacity="0.6" />
+      </linearGradient>
+      <linearGradient id="Products">
+        <!-- Gradient stops -->
+        <stop offset="0%" stop-color="black" stop-opacity="0.5" />
+        <stop offset="40%" stop-color="white" stop-opacity="1" />
+        <stop offset="100%" stop-color="black" stop-opacity="0.5" />
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <!-- Left Sidebar -->
+  <div id="info-popup">
+    <div id="info-top-bar" >
+      <div id="close-popup" onclick="closePopup()" >
+        <div id="X" >x</div>
+      </div>
+    </div>
+    <div id="info-page" >
+      <div id="info-text" >
+        <h1>Information</h1>
+        <h2>How to play</h2>
+        <ul>
+        <li>Click "start" button or press "space bar" on your keyboard to start</li>
+        <li>The product to calculate will appear in the left-hand display</li>
+        <li>Use the keyboard or the on-screen keypad to enter the correct calculation: this will appear in the right-hand display</li>
+        <li>If you are happy with your answer, click the "enter" button or press "enter" on your keyboard</li>
+        <li>If you have made a mistake, you can always delete your entered number with the "del" button or by pressing "back space" on your keyboard</li>
+      </ul>
+      <h2>Extra options (when the game is not running)</h2>
+        <ul>
+        <li>Click "C" in the word multiplication or on your keyboard and press or click "enter" to reset your save-game</li>
+        <li>Click "I" in the word multiplication or on your keyboard to show this information screen</li>
+        <li>Click "T" in the word multiplication or on your keyboard followed by the numbers 5, 10, 15 or 20 and enter to set the timer the equivalent minutes</li>
+        <li>Click "L" in the word multiplication or on your keyboard followed by a number between 1 and 16 and enter to select a level</li>
+      </ul>
+      </div>
+  </div>
+  </div>
+  <div class="left">
+    <div class="table" id="table1">
+      <!-- Rows for the table -->
+      <div class="row" id="ten"></div>
+      <div class="row" id="nine"></div>
+      <div class="row" id="eight"></div>
+      <div class="row" id="seven"></div>
+      <div class="row" id="six"></div>
+      <div class="row" id="five"></div>
+      <div class="row" id="four"></div>
+      <div class="row" id="three"></div>
+      <div class="row" id="two"></div>
+      <div class="row" id="one"></div>
+    </div>
+  </div>
+
+  <!-- Right Sidebar -->
+  <div class="right">
+    <!-- Display Area -->
+    <div id="display">
+      <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+        <rect x="0" y="0" rx="2%" ry="2%" width="100%" height="100%" fill="url(#Hope)" stroke="black" stroke-width="1%" />
+        <rect id="question-field" x="2%" y="8%" rx="2%" ry="2%" width="56%" height="84%" fill="cyan" stroke="black" stroke-width="2%" />
+        <rect id="answer-field" x="68%" y="8%" rx="2%" ry="2%" width="30%" height="84%" fill="cyan" stroke="black" stroke-width="2%" />
+        <text id="expression" x="28%" y="63%" text-anchor="middle" font-size="3em" stroke="black" fill="black"></text>
+        <text x="63%" y="63%" text-anchor="middle" font-size="2em" stroke="black" fill="black"> = </text>
+        <text id="result" x="82%" y="63%" text-anchor="middle" font-size="3em" stroke="black" fill="black"></text>
+        <rect x="2%" y="8%" rx="2%" ry="2%" width="56%" height="84%" fill="url(#Glass)" />
+        <rect x="68%" y="8%" rx="2%" ry="2%" width="30%" height="84%" fill="url(#Glass)" />
+      </svg>
+    </div>
+
+    <!-- Operation Buttons -->
+    <div class="opbutton" id="b7" onclick="enter(true, '7')" ></div>
+    <div class="opbutton" id="b8" onclick="enter(true, '8')" ></div>
+    <div class="opbutton" id="b9" onclick="enter(true, '9')" ></div>
+    <div class="opbutton" id="b4" onclick="enter(true, '4')" ></div>
+    <div class="opbutton" id="b5" onclick="enter(true, '5')" ></div>
+    <div class="opbutton" id="b6" onclick="enter(true, '6')" ></div>
+    <div class="opbutton" id="b1" onclick="enter(true, '1')" ></div>
+    <div class="opbutton" id="b2" onclick="enter(true, '2')" ></div>
+    <div class="opbutton" id="b3" onclick="enter(true, '3')" ></div>
+    <div class="opbutton" id="bdel" onclick="del(true, 'bdel')" ></div>
+    <div class="opbutton" id="b0" onclick="enter(true, '0')" ></div>
+    
+
+    <!-- Enter Button -->
+    <div class="opbutton" id="benter" onclick="check(true, 'benter')" >
+      <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <path d="M 50 7 Q 50 4 53 4 L 98 4 L 98 95 Q 98 98 95 98 L 0 98 L 0 57 Q 0 54 3 54 L 50 54 Z" fill="#00000037" />
+      <path d="M 52 5 Q 52 2 55 2 L 97 2 Q 100 2 100 5 L 100 93 Q 100 96 97 96 L 5 96 Q 2 96 2 93 L 2 55 Q 2 52 5 52 L 49 52 Q 52 52 52 49 Z" fill="darkgreen" />
+      <path d="M 54 5 Q 54 2 57 2 L 96 2 Q 99 2 99 5 L 99 90 Q 99 93 96 93 L 7 93 Q 4 93 4 90 L 4 55 Q 4 52 7 52 L 52 52 Q 54 52 54 49 Z" fill="url(#Bob)" />
+      <text x="23" y="81" text-anchor="left" font-size="1.5em" stroke="black" fill="white">Enter</text>
+      </svg>
+    </div>
+
+    <!-- Start Button -->
+    <div class="opbutton" id="bstart" onclick="start(true, 'bstart')" >
+      <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <rect x="0" y="4%" rx="5%" ry="5%" width="96%" height="95%" fill="#00000037" />
+        <rect X="4%" y="2%" rx="5%" ry="5%" width="96%" height="95%" fill="darkgreen" />
+        <rect X="8%" y="2%" rx="5%" ry="5%" width="93%" height="92%" fill="url(#Bob)" />
+        <text x="28%" y="-18%" text-anchor="left" font-size="1.5em" stroke="black" fill="white" transform="rotate(90) scale(1, 2)">Start</text>
+        </svg>
+    </div>
+
+    <!-- Meter -->
+    <div id="meter">
+      <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+        <!-- Rectangles for meter -->
+        <rect x="0" y="1.5%" rx="5%" ry="2%" width="96%" height="97.5%" fill="#00000037" />
+        <rect X="4%" y="1%" rx="5%" ry="2%" width="94%" height="97%" fill="black" />
+        <rect X="8%" y="1%" rx="5%" ry="2%" width="93%" height="96%" fill="url(#Bob)" />
+        <text x="50%" y="86%" text-anchor="middle" font-size="2em" stroke="black" fill="white">Level</text>
+        <text id="level" x="50%" y="94%" text-anchor="middle" stroke="black" font-size="2.3em" fill="white">1</text>
+      </svg>
+    </div>
+
+    <!-- Products -->
+    <div id="products">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+        <!-- Rectangles for products -->
+        
+        <rect X="58%" y="4%" width="30%" height="75%" fill="red" />
+        <rect X="58%" y="4%" width="30%" height="75%" fill="url(#Products)" />
+        <rect id="productsBarFill" X="58%" y="4%" width="30%" height="0%" fill="black" />
+        <rect id="productsBarShadow" X="58%" y="4%" width="30%" height="0%" fill="url(#Meter)" />
+      </svg>
+    </div>
+
+    <!-- Timer -->
+    <div id="timer">
+      <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+        <!-- Rectangles for timer -->
+        <rect X="15%" y="4%" width="30%" height="75%" fill="blue" />
+        <rect X="15%" y="4%" width="30%" height="75%" fill="url(#Timer)" />
+        <rect id="timerBarFill" X="15%" y="4%" width="30%" height="74%" fill="black" />
+        <rect id="timerBarShadow" X="15%" y="4%" width="30%" height="74%" fill="url(#Meter)" />
+      </svg>
+    </div>
+
+    <div id="covers">
+      <div id="tip1" class="tooltipcontainer" onmouseover="readTimer()">
+        <span class="tooltip" id="timertip">test1</span>
+      </div>
+      <div id="tip2" class="tooltipcontainer" onmouseover="readProducts()">
+        <span class="tooltip" id="producttip">test2</span>
+      </div>
+    </div>
+    <!-- Info Bar -->
+    <div id="infoBar" >
+      <div id="infoBox">
+      <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+        <rect x="4%" y="0.5%" rx="2.5%" ry="1%" width="86%" height="98.5%" fill="#00000037" />
+        <rect x="7%" y="0" rx="2.5%" ry="1%" width="87%" height="98.5%" fill="black" />
+        <rect x="10%" y="0" rx="2.5%" ry="1%" width="83%" height="98%" fill="darkgray" />
+      </svg>
+    </div>
+      <div id="M" class="multiplication" >M</div>
+      <div id="U" class="multiplication" >U</div>
+      <div id="L1" class="multiplication" onclick="enter(false, 'l')">L</div>
+      <div id="T1" class="multiplication" onclick="enter(false, 't')">T</div>
+      <div id="I1" class="multiplication" onclick="enter(false, 'i')">I</div>
+      <div id="P" class="multiplication" >P</div>
+      <div id="L2" class="multiplication" onclick="enter(false, 'l')">L</div>
+      <div id="I2" class="multiplication" onclick="enter(false, 'i')">I</div>
+      <div id="C" class="multiplication" onclick="enter(false, 'c')">C</div>
+      <div id="A" class="multiplication" >A</div>
+      <div id="T2" class="multiplication" onclick="enter(false, 't')">T</div>
+      <div id="I3" class="multiplication" onclick="enter(false, 'i')">I</div>
+      <div id="O" class="multiplication" >O</div>
+      <div id="N" class="multiplication" >N</div>
+    </div>
+  </div>
+
+  <!-- JavaScript script -->
+  <script >
+    // -------------------GLOBAL VARIABLES-----------------------------
 
 let level = 4; // 4x4 table is a good start for year 7
 let oldRow = { h: [], v: [], crossover: "" };
@@ -499,6 +1054,7 @@ function growTable() {
         let _id = "h" + y;
         if (i == 0) _id = "v" + (y - 1);
         div.setAttribute("id", _id);
+        div.setAttribute("class", "table-button");
         if (input != 1)
           div.onclick = () => {
             tableRow(_id);
@@ -885,3 +1441,6 @@ function readTimer() {
 function readProducts() {
   element("producttip").innerHTML = `${products.length / 2} multiplikationer<br> kvar till nästa nivå!`
 }
+  </script>
+</body>
+</html>
