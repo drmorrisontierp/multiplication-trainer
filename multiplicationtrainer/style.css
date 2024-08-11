@@ -87,3 +87,164 @@ body {
   padding: 10px;
   z-index: 1000;
 }
+
+#display {
+  grid-area: 1/1/2/6;
+  height: 19vh;
+}
+
+#b7 {
+  grid-area: 2/2/3/3
+}
+
+#b8 {
+  grid-area: 2/3/3/4
+}
+
+#b9 {
+  grid-area: 2/4/3/5
+}
+
+#b4 {
+  grid-area: 3/2/4/3
+}
+
+#b5 {
+  grid-area: 3/3/4/4
+}
+
+#b6 {
+  grid-area: 3/4/4/5
+}
+
+#b1 {
+  grid-area: 4/2/5/3
+}
+
+#b2 {
+  grid-area: 4/3/5/4
+}
+
+#b3 {
+  grid-area: 4/4/5/5;
+  z-index: 1;
+}
+
+#bdel {
+  grid-area: 5/2/6/3
+}
+
+#b0 {
+  grid-area: 5/3/6/4
+}
+
+#benter {
+  grid-area: 4/4/6/6;
+  z-index: 0;
+}
+
+#bstart {
+  grid-area: 2/5/4/6;
+  z-index: 0;
+}
+
+#meter {
+  grid-area: 2/1/6/2;
+  z-index: 0;
+}
+
+#products {
+  grid-area: 2/1/6/2;
+  z-index: 0;
+}
+
+#timer {
+  grid-area: 2/1/6/2;
+  z-index: 0;
+}
+
+#covers {
+  grid-area: 2/1/6/2;
+  z-index: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr)
+}
+
+#infoBar {
+  display: grid;
+  grid-template-rows: repeat(14, 1fr);
+  grid-area: 1/6/7/7;
+  height: 100%; 
+}
+
+#infoBox {
+  grid-area: 1/1/15/2
+}
+
+#M {
+  grid-area: 1/1/2/2
+}
+
+#U {
+  grid-area: 2/1/3/2
+}
+
+#L1 {
+  grid-area: 3/1/4/2
+}
+
+#T1 {
+  grid-area: 4/1/5/2
+}
+
+#I1 {
+  grid-area: 5/1/6/2
+}
+
+#P {
+  grid-area: 6/1/7/2
+}
+
+#L2 {
+  grid-area: 7/1/8/2
+}
+
+#I2 {
+  grid-area: 8/1/9/2
+}
+
+#C {
+  grid-area: 9/1/10/2
+}
+
+#A {
+  grid-area: 10/1/11/2
+}
+
+#T2 {
+  grid-area: 11/1/12/2
+}
+
+#I3 {
+  grid-area: 12/1/13/2
+}
+
+#O {
+  grid-area: 13/1/14/2
+}
+
+#N {
+  grid-area: 14/1/15/2
+}
+
+#tip1 {
+  grid-area:1/1/2/2
+}
+
+#tip2 {
+  grid-area:1/2/2/3;
+  z-index:10;
+}
+
+
+

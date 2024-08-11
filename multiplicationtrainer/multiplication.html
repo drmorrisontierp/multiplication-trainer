@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
@@ -11,9 +11,10 @@
       http-equiv="X-Content-Security-Policy"
       content="default-src 'self'; script-src 'self'"
     />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Multiplication Trainer</title>
     <style>
-        /* Reset default margin, padding, and set full viewport
+      /* Reset default margin, padding, and set full viewport
    height for HTML element */
 html {
   margin: 0;
@@ -252,6 +253,14 @@ body {
   grid-area: 14/1/15/2
 }
 
+#tip1 {
+  grid-area:1/1/2/2
+}
+
+#tip2 {
+  grid-area:1/2/2/3;
+  z-index:10;
+}
     </style>
   </head>
   <body>
@@ -419,10 +428,10 @@ body {
     </div>
 
     <div id="covers">
-      <div class="tooltipcontainer" onmouseover="readTimer()" style="grid-area:1/1/2/2">
+      <div id="tip1" class="tooltipcontainer" onmouseover="readTimer()">
         <span class="tooltip" id="timertip">test1</span>
       </div>
-      <div class="tooltipcontainer" onmouseover="readProducts()"style="grid-area:1/2/2/3;z-index:10;">
+      <div id="tip2" class="tooltipcontainer" onmouseover="readProducts()">
         <span class="tooltip" id="producttip">test2</span>
       </div>
     </div>
@@ -453,7 +462,7 @@ body {
   </div>
 
   <!-- JavaScript script -->
-  <script>
+  <script >
     // -------------------GLOBAL VARIABLES-----------------------------
 
 let level = 4; // 4x4 table is a good start for year 7
@@ -529,6 +538,14 @@ function _recolor(event, fill, color) {
   let x = element(event);
   if (!x) {
     return;
+  }
+  x = x.children[0];
+  if (x && x.children[1] && x.children[3]) {
+    x.children[1].setAttribute("fill", fill);
+    x.children[3].setAttribute("fill", color);
+    x.children[3].setAttribute("stroke", "black");
+  } else {
+    console.error(`Invalid element structure: ${event}`); // Debug statement
   }
 }
 
@@ -1310,8 +1327,7 @@ function readTimer() {
 
 function readProducts() {
   element("producttip").innerHTML = `${products.length / 2} multiplikationer<br> kvar till nästa nivå!`
-}    
-
+}
   </script>
 </body>
 </html>

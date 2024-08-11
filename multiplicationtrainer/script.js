@@ -74,6 +74,14 @@ function _recolor(event, fill, color) {
   if (!x) {
     return;
   }
+  x = x.children[0];
+  if (x && x.children[1] && x.children[3]) {
+    x.children[1].setAttribute("fill", fill);
+    x.children[3].setAttribute("fill", color);
+    x.children[3].setAttribute("stroke", "black");
+  } else {
+    console.error(`Invalid element structure: ${event}`); // Debug statement
+  }
 }
 
 
