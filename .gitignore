@@ -21,6 +21,7 @@ mochawesome-report/
 coverage/
 *.mocharc.*
 test-results.xml
+.parcel-cache/
 
 # Electron
 electron-packager/
